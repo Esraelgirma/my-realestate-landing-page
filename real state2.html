@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior: smooth;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Premier Estate | Ethiopian Luxury Property</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- Base & Reset --- */
+        :root {
+            --color-dark: #0f172a; /* Slate 900 */
+            --color-light: #f9fafb; /* Gray 50 */
+            --color-accent: #F59E0B; /* Amber 500 */
+            --color-text: #374151; /* Gray 700 */
+            --color-white: #ffffff;
+            --color-black: #000000;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--color-light);
+            color: var(--color-text);
+        }
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- Utilities --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        .text-center { text-align: center; }
+        .shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
+        .shadow-2xl { box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1); }
+        .rounded-xl { border-radius: 0.75rem; }
+        .rounded-2xl { border-radius: 1rem; }
+        .rounded-full { border-radius: 9999px; }
+        .transition { transition: all 0.3s ease-in-out; }
+        .uppercase { text-transform: uppercase; }
+
+        /* --- Header / Navigation --- */
+        .header {
+            background-color: var(--color-dark);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            padding: 1rem 0;
+        }
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: 0.05em;
+            color: var(--color-white);
+            display: flex;
+            align-items: center;
+        }
+        .logo i {
+            color: var(--color-accent);
+            margin-right: 0.5rem;
+            font-size: 1.25em;
+        }
+
+        /* Desktop Nav */
+        .desktop-nav {
+            display: none;
+        }
+        .nav-link {
+            color: var(--color-white);
+            padding: 0 1rem;
+            position: relative;
+            font-weight: 500;
+        }
+        .nav-link:hover {
+            color: var(--color-accent);
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--color-accent);
+            transition: width 0.3s ease-in-out;
+        }
+        .nav-link:hover::after, .nav-active::after {
+            width: 100%;
+        }
+        .nav-active { 
+            color: var(--color-accent) !important; 
+            font-weight: 700;
+        }
+
+        /* Mobile Menu */
+        .menu-btn {
+            font-size: 1.5rem;
+            color: var(--color-white);
+            padding: 0.5rem;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+        .mobile-menu {
+            display: none;
+            background-color: #1e293b; /* Slate 800 */
+            border-top: 1px solid #334155; /* Slate 700 */
+        }
+        .mobile-menu a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: var(--color-white);
+            border-radius: 0.5rem;
+            transition: background-color 0.3s;
+        }
+        .mobile-menu a i {
+            color: var(--color-accent);
+            width: 1.5rem;
+            margin-right: 0.5rem;
+        }
+        .mobile-menu a:hover {
+            background-color: #334155; /* Slate 700 */
+        }
+        .hidden { display: none !important; }
+
+        @media (min-width: 1024px) {
+            .desktop-nav { display: flex; align-items: center; gap: 2rem; }
+            .menu-btn { display: none; }
+        }
+
+        /* --- Hero Section --- */
+        .hero-bg {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--color-white);
+            /* NOTE: Replace with a direct image URL for live use */
+            background-image: linear-gradient(rgba(15, 23, 42, 0.45), rgba(15, 23, 42, 0.45)), 
+                              url('realstate/logo.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+        .hero-subtitle {
+            font-size: 1.25rem;
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+            max-width: 48rem;
+            margin-left: auto;
+            margin-right: auto;
+            color: #cbd5e1; /* Slate 300 */
+        }
+        .hero-button {
+            background-color: var(--color-accent);
+            color: var(--color-dark);
+            font-weight: 900;
+            font-size: 1.125rem;
+            padding: 0.75rem 2.5rem;
+            border-radius: 9999px;
+            box-shadow: 0 10px 15px -3px rgba(245, 158, 11, 0.5);
+            display: inline-block;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+        .hero-button:hover {
+            background-color: #d9900b;
+            transform: scale(1.05);
+        }
+        .hero-button i { margin-left: 0.5rem; }
+        
+        @media (min-width: 768px) {
+            .hero-title { font-size: 4.5rem; }
+        }
+
+        /* --- Quick Links/Search Bar --- */
+        .quick-links-bar {
+            background-color: var(--color-white);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem 0;
+            margin-top: -4rem;
+            position: relative;
+            z-index: 10;
+            max-width: 72rem;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 0.75rem;
+        }
+        .quick-links-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            align-items: center;
+        }
+        @media (min-width: 768px) {
+            .quick-links-grid { grid-template-columns: repeat(5, 1fr); }
+            .quick-links-grid > :last-child { grid-column: span 2 / span 2; }
+        }
+        .quick-links-grid div { text-align: center; padding: 0.5rem; }
+        .quick-links-grid i { font-size: 1.875rem; margin-bottom: 0.25rem; }
+        .quick-links-grid p { font-size: 0.75rem; font-weight: 500; }
+        .quick-links-grid .search-btn {
+            width: 100%;
+            background-color: var(--color-dark);
+            color: var(--color-white);
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .quick-links-grid .search-btn:hover { background-color: #1e293b; }
+        .quick-links-grid .fa-hand-holding-dollar { color: #16a34a; }
+        .quick-links-grid .fa-search-dollar { color: #2563eb; }
+        .quick-links-grid .fa-house-user { color: #9333ea; }
+
+        /* --- Property Cards --- */
+        .section-title { font-size: 2.25rem; font-weight: 800; color: var(--color-dark); }
+        .section-subtitle { color: #6b7280; margin-top: 0.5rem; font-size: 1.125rem; }
+        .property-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+        }
+        @media (min-width: 768px) {
+            .property-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (min-width: 1024px) {
+            .property-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        .property-card {
+            background-color: var(--color-white);
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            border: 1px solid #f3f4f6;
+            transition: box-shadow 0.3s, border-color 0.3s, transform 0.3s;
+        }
+        .property-card:hover {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border-color: var(--color-accent);
+        }
+        .property-card img {
+            width: 100%;
+            height: 14rem;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        .property-card:hover img { transform: scale(1.05); }
+        .card-content { padding: 1.5rem; }
+        .card-title { font-size: 1.5rem; font-weight: 700; color: var(--color-dark); margin-bottom: 0.5rem; }
+        .card-price { color: #d97706; font-weight: 900; font-size: 1.25rem; margin-bottom: 1rem; }
+        .card-location { 
+            color: #6b7280; margin-bottom: 1rem; display: flex; align-items: center; 
+            font-size: 1rem;
+        }
+        .card-location i { color: #ef4444; margin-right: 0.5rem; }
+        .card-details {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.875rem;
+            color: #4b5563;
+            border-top: 1px solid #e5e7eb;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 1rem 0;
+            margin-bottom: 1rem;
+        }
+        .card-details div { text-align: center; }
+        .card-details i { color: var(--color-dark); margin-bottom: 0.25rem; }
+        .card-details p { font-weight: 700; margin-top: 0.25rem; }
+        .card-details span { font-size: 0.75rem; }
+        .card-button {
+            width: 100%;
+            background-color: var(--color-dark);
+            color: var(--color-white);
+            font-weight: 600;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            display: block;
+            text-align: center;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .card-button:hover { background-color: var(--color-accent); color: var(--color-dark); }
+
+        /* --- Buyer's Guide Section --- */
+        .guide-section {
+            background-color: var(--color-dark);
+            color: var(--color-white);
+            padding: 4rem 0;
+        }
+        .guide-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        @media (min-width: 1024px) {
+            .guide-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        .guide-title { font-size: 2.25rem; font-weight: 800; margin-bottom: 1rem; color: var(--color-accent); }
+        .guide-subtitle { color: #cbd5e1; font-size: 1.125rem; margin-bottom: 2rem; }
+        .service-item { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; }
+        .service-item i { font-size: 1.875rem; color: var(--color-accent); margin-top: 0.25rem; }
+        .service-item h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.25rem; }
+        .service-item p { color: #94a3b8; }
+        .guide-image img { width: 100%; border-radius: 0.75rem; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); }
+
+        /* --- Agents Section --- */
+        .agent-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        @media (min-width: 768px) {
+            .agent-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (min-width: 1024px) {
+            .agent-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+        .agent-card {
+            background-color: #f9fafb; /* Gray 50 */
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: box-shadow 0.3s, transform 0.3s;
+        }
+        .agent-card:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+            transform: translateY(-4px);
+        }
+        .agent-card img {
+            width: 8rem;
+            height: 8rem;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            object-fit: cover;
+            border: 4px solid var(--color-accent);
+        }
+        .agent-card h3 { font-size: 1.25rem; font-weight: 700; color: var(--color-dark); }
+        .agent-card p:nth-child(3) { color: #d97706; font-weight: 600; margin-bottom: 0.75rem; }
+        .agent-card p:last-child { color: #4b5563; font-size: 0.875rem; }
+
+        /* --- Contact Form Section --- */
+        .contact-form-section { background-color: #f3f4f6; padding: 4rem 0; }
+        .contact-form-box {
+            max-width: 48rem;
+            margin: 0 auto;
+            background-color: var(--color-white);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
+        }
+        @media (min-width: 768px) {
+            .contact-form-box { padding: 3rem; }
+        }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-label { display: block; font-size: 1.125rem; font-weight: 500; color: var(--color-dark); margin-bottom: 0.5rem; }
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--color-accent);
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.5);
+        }
+        .form-submit-btn {
+            width: 100%;
+            background-color: var(--color-accent);
+            color: var(--color-dark);
+            font-weight: 900;
+            font-size: 1.25rem;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 6px -1px rgba(245, 158, 11, 0.5);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .form-submit-btn:hover { background-color: #d9900b; transform: scale(1.01); }
+
+        /* --- Call to Action (CTA) --- */
+        .cta-section { background-color: var(--color-accent); padding: 4rem 0; text-align: center; }
+        .cta-title { font-size: 2.25rem; font-weight: 800; color: var(--color-dark); margin-bottom: 1rem; }
+        @media (min-width: 768px) {
+            .cta-title { font-size: 3rem; }
+        }
+        .cta-subtitle { font-size: 1.25rem; color: #4b5563; margin-bottom: 2rem; }
+        .cta-button {
+            background-color: var(--color-dark);
+            color: var(--color-white);
+            font-weight: 700;
+            padding: 0.75rem 3rem;
+            border-radius: 9999px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .cta-button:hover { background-color: #1e293b; transform: scale(1.05); }
+
+        /* --- Footer --- */
+        .footer {
+            background-color: var(--color-dark);
+            color: var(--color-white);
+            padding-top: 4rem;
+            padding-bottom: 1.5rem;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid #334155;
+        }
+        @media (min-width: 768px) {
+            .footer-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+        .footer-logo { font-size: 1.5rem; font-weight: 900; color: var(--color-accent); margin-bottom: 1rem; }
+        .footer-text { color: #94a3b8; font-size: 0.875rem; line-height: 1.5; }
+        .footer h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: var(--color-accent); }
+        .footer ul { list-style: none; padding: 0; margin: 0; }
+        .footer ul li { margin-bottom: 0.5rem; }
+        .footer ul a { color: #94a3b8; transition: color 0.3s; }
+        .footer ul a:hover { color: var(--color-accent); }
+        .footer-contact-item { display: flex; align-items: flex-start; margin-bottom: 0.75rem; color: #94a3b8; }
+        .footer-contact-item i { color: var(--color-accent); width: 1.5rem; margin-top: 0.25rem; }
+
+        /* Newsletter */
+        .newsletter-form { display: flex; margin-top: 1rem; }
+        .newsletter-form input {
+            padding: 0.75rem;
+            border: none;
+            border-radius: 0.5rem 0 0 0.5rem;
+            width: 100%;
+            color: var(--color-dark);
+        }
+        .newsletter-form button {
+            background-color: var(--color-accent);
+            color: var(--color-dark);
+            padding: 0.75rem;
+            border: none;
+            border-radius: 0 0.5rem 0.5rem 0;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .newsletter-form button:hover { background-color: #d9900b; }
+
+        .copyright { text-align: center; padding-top: 1.5rem; }
+        .copyright p { color: #64748b; font-size: 0.875rem; }
+        .social-links { margin-top: 0.75rem; display: flex; justify-content: center; gap: 1rem; }
+        .social-links a { color: #64748b; font-size: 1rem; transition: color 0.3s; }
+        .social-links a:hover { color: var(--color-accent); }
+
+        /* --- Modal Styles (Search Popup) --- */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            transition: opacity 0.3s;
+        }
+        .modal-content {
+            background-color: var(--color-white);
+            border-radius: 0.75rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            max-width: 32rem;
+            width: 100%;
+            padding: 2rem;
+            position: relative;
+        }
+        .modal-close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.875rem;
+            color: #4b5563;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .modal-close-btn:hover { color: #ef4444; }
+        .modal-title { font-size: 1.875rem; font-weight: 700; color: var(--color-dark); margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 1px solid #e5e7eb; }
+        .modal-form-group { margin-bottom: 1rem; }
+        .modal-form-label { display: block; font-size: 0.875rem; font-weight: 500; color: #4b5563; margin-bottom: 0.25rem; }
+        .modal-form-input, .modal-form-select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .modal-form-input:focus, .modal-form-select:focus {
+            outline: none;
+            border-color: var(--color-accent);
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.5);
+        }
+        .modal-submit-btn {
+            width: 100%;
+            background-color: var(--color-dark);
+            color: var(--color-white);
+            font-weight: 700;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            border: none;
+            cursor: pointer;
+            margin-top: 1.5rem;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .modal-submit-btn:hover { background-color: var(--color-accent); color: var(--color-dark); }
+    </style>
+</head>
+<body>
+
+    <header class="header shadow-2xl">
+        <div class="container">
+            <a href="#home" class="logo">
+                <i class="fas fa-crown"></i>
+                <span>Premier Estate</span>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="#home" class="nav-link nav-active">Home</a>
+                <a href="#featured" class="nav-link">Featured</a>
+                <a href="#guide" class="nav-link">Buyer's Guide</a>
+                <a href="#portfolio" class="nav-link">Portfolio</a>
+                <a href="#agents" class="nav-link">Agents</a>
+                <a href="#contact-form-section" class="nav-link">Contact</a>
+            </nav>
+
+            <button id="menu-btn" class="menu-btn">
+                <i class="fas fa-bars" id="menu-icon"></i>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="mobile-menu">
+            <nav style="padding: 1rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                <a href="#home" class="mobile-link"><i class="fas fa-house-chimney"></i> Home</a>
+                <a href="#featured" class="mobile-link"><i class="fas fa-star"></i> Featured Listings</a>
+                <a href="#guide" class="mobile-link"><i class="fas fa-compass"></i> Buyer's Guide</a>
+                <a href="#portfolio" class="mobile-link"><i class="fas fa-warehouse"></i> Portfolio</a>
+                <a href="#agents" class="mobile-link"><i class="fas fa-user-tie"></i> Agents</a>
+                <a href="#contact-form-section" class="mobile-link"><i class="fas fa-headset"></i> Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <div id="search-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button id="close-modal-btn" class="modal-close-btn">
+                <i class="fas fa-times"></i>
+            </button>
+            <h3 class="modal-title">Advanced Property Search</h3>
+
+            <form id="search-form">
+                <div class="modal-form-group">
+                    <label for="type" class="modal-form-label">Property Type</label>
+                    <select id="type" name="type" class="modal-form-select">
+                        <option value="villa">Luxury Villa</option>
+                        <option value="apartment">Penthouse / Apartment</option>
+                        <option value="land">Commercial Land</option>
+                        <option value="rent">Rental Property</option>
+                    </select>
+                </div>
+                <div class="modal-form-group">
+                    <label for="location" class="modal-form-label">Location</label>
+                    <input type="text" id="location" name="location" placeholder="e.g. Bole, Sarbet, Kazanchis" class="modal-form-input">
+                </div>
+                <div class="modal-form-group">
+                    <label for="price" class="modal-form-label">Max Price (ETB)</label>
+                    <input type="number" id="price" name="price" placeholder="e.g. 15000000" class="modal-form-input">
+                </div>
+                <div class="modal-form-group">
+                    <label for="area" class="modal-form-label">Min Area (Sqm)</label>
+                    <input type="number" id="area" name="area" placeholder="e.g. 200" class="modal-form-input">
+                </div>
+
+                <button type="submit" class="modal-submit-btn">
+                    Search Properties <i class="fas fa-search"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <main>
+        <section id="home" class="hero-bg">
+            <div class="container" style="padding: 4rem 1.5rem;">
+                <p style="font-size: 1.125rem; font-weight: 600; color: #fcd34d; margin-bottom: 0.75rem;" class="uppercase">The Art of Fine Living</p>
+                <h1 class="hero-title">Discover Addis Ababa's <br> Most Exclusive Estates</h1>
+                <p class="hero-subtitle">We redefine luxury real estate with curated listings, expert guidance, and personalized service.</p>
+                
+                <a href="#featured" class="hero-button">
+                    Explore Listings <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </section>
+
+        <div class="quick-links-bar shadow-2xl">
+            <div class="container">
+                 <div class="quick-links-grid">
+                     <div><i class="fas fa-hand-holding-dollar"></i><p>Selling</p></div>
+                     <div><i class="fas fa-search-dollar"></i><p>Buying</p></div>
+                     <div><i class="fas fa-house-user"></i><p>Renting</p></div>
+                     <div style="grid-column: span 2 / span 2;"><button id="search-modal-btn" class="search-btn">Start Your Search</button></div>
+                 </div>
+            </div>
+        </div>
+
+        <section id="featured" style="padding: 4rem 0;">
+            <div class="container">
+                <div class="text-center" style="margin-bottom: 4rem;">
+                    <h2 class="section-title">Curated Exclusive Properties</h2>
+                    <p class="section-subtitle">The finest homes that reflect Ethiopian elegance and modern architecture.</p>
+                </div>
+                
+                <div class="property-grid">
+                    
+                    <div class="property-card transition">
+                        <img src="realstate/hoome1.jpg" alt="Riverside Residence" class="transition">
+                        <div class="card-content">
+                            <h3 class="card-title">Riverside Luxury Villa</h3>
+                            <p class="card-price">ETB 12,000,000</p>
+                            <p class="card-location"><i class="fas fa-location-dot"></i>Bole Arabsa, Addis Ababa</p>
+                            
+                            <div class="card-details">
+                                <div><i class="fas fa-bed"></i><p>6 Beds</p><span>Bedrooms</span></div>
+                                <div><i class="fas fa-bath"></i><p>5 Baths</p><span>Bathrooms</span></div>
+                                <div><i class="fas fa-car"></i><p>3 Garages</p><span>Parking</span></div>
+                                <div><i class="fas fa-ruler-combined"></i><p>600 Sqm</p><span>Area</span></div>
+                            </div>
+                            <a href="#contact-form-section" class="card-button">View Details</a>
+                        </div>
+                    </div>
+
+                    <div class="property-card transition">
+                        <img src="realstate/bath1.jpg" alt="Highrise Apartment" class="transition">
+                        <div class="card-content">
+                            <h3 class="card-title">Penthouse in the Sky</h3>
+                            <p class="card-price">ETB 8,500,000</p>
+                            <p class="card-location"><i class="fas fa-location-dot"></i>Meskel Square, Addis Ababa</p>
+                            
+                            <div class="card-details">
+                                <div><i class="fas fa-bed"></i><p>3 Beds</p><span>Bedrooms</span></div>
+                                <div><i class="fas fa-bath"></i><p>3 Baths</p><span>Bathrooms</span></div>
+                                <div><i class="fas fa-car"></i><p>1 Garage</p><span>Parking</span></div>
+                                <div><i class="fas fa-ruler-combined"></i><p>210 Sqm</p><span>Area</span></div>
+                            </div>
+                            <a href="#contact-form-section" class="card-button">View Details</a>
+                        </div>
+                    </div>
+
+                    <div class="property-card transition">
+                        <img src="realstate/collect1.jpg" alt="Investment Land" class="transition">
+                        <div class="card-content">
+                            <h3 class="card-title">Prime Commercial Land</h3>
+                            <p class="card-price">ETB 25,000,000</p>
+                            <p class="card-location"><i class="fas fa-location-dot"></i>Lebu Area, Great Investment</p>
+                            
+                            <div class="card-details">
+                                <div><i class="fas fa-building"></i><p>Zoned</p><span>Commercial</span></div>
+                                <div><i class="fas fa-dollar-sign"></i><p>Negotiable</p><span>Price</span></div>
+                                <div><i class="fas fa-map-marked-alt"></i><p>Title</p><span>Clean</span></div>
+                                <div><i class="fas fa-ruler-combined"></i><p>5000 Sqm</p><span>Area</span></div>
+                            </div>
+                            <a href="#contact-form-section" class="card-button">Inquire Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="guide" class="guide-section">
+            <div class="container">
+                <div class="guide-grid">
+                    <div>
+                        <h2 class="guide-title">The Premier Buyer's Guide</h2>
+                        <p class="guide-subtitle">Navigating the high-end real estate market requires precision. Our comprehensive services ensure a smooth and secure transaction.</p>
+                        
+                        <div style="margin-top: 1.5rem;">
+                            <div class="service-item">
+                                <i class="fas fa-money-check-alt"></i>
+                                <div><h3>Secure Financing</h3><p>We connect you with leading financial institutions for tailored mortgage solutions.</p></div>
+                            </div>
+                            <div class="service-item">
+                                <i class="fas fa-gavel"></i>
+                                <div><h3>Legal Certainty</h3><p>Full legal review and documentation to guarantee a clean title transfer.</p></div>
+                            </div>
+                            <div class="service-item">
+                                <i class="fas fa-chart-bar"></i>
+                                <div><h3>Market Analysis</h3><p>Receive in-depth reports to make informed investment decisions.</p></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="guide-image">
+                         <img src="realstate/collect2.jpg" alt="Expert Real Estate Guidance">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio" style="padding: 4rem 0;">
+            <div class="container">
+                <div class="text-center" style="margin-bottom: 4rem;">
+                    <h2 class="section-title">Our Exclusive Sales Portfolio</h2>
+                    <p class="section-subtitle">A glance at some of the exquisite properties we have successfully managed.</p>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
+                    <div style="position: relative; height: 16rem; border-radius: 0.75rem; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
+                        <img src="realstate/home2.jpg" alt="Gated Community" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div style="position: absolute; inset: 0; background-color: rgba(0, 0, 0, 0.4); display: flex; align-items: flex-end; padding: 1rem;"><p style="color: white; font-weight: 600;">G+2 Villa, Sarbet</p></div>
+                    </div>
+                    <div style="position: relative; height: 16rem; border-radius: 0.75rem; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
+                        <img src="realstate/home3.jpg" alt="Rooftop Terrace" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div style="position: absolute; inset: 0; background-color: rgba(0, 0, 0, 0.4); display: flex; align-items: flex-end; padding: 1rem;"><p style="color: white; font-weight: 600;">Apartment, Kazanchis</p></div>
+                    </div>
+                    <div style="position: relative; height: 16rem; border-radius: 0.75rem; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
+                        <img src="realstate/home4.jpg" alt="Modern Kitchen" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div style="position: absolute; inset: 0; background-color: rgba(0, 0, 0, 0.4); display: flex; align-items: flex-end; padding: 1rem;"><p style="color: white; font-weight: 600;">Luxury Penthouse</p></div>
+                    </div>
+                    <div style="position: relative; height: 16rem; border-radius: 0.75rem; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
+                        <img src="realstate/hoome1.jpg" alt="Boutique Residence" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div style="position: absolute; inset: 0; background-color: rgba(0, 0, 0, 0.4); display: flex; align-items: flex-end; padding: 1rem;"><p style="color: white; font-weight: 600;">Boutique Residence</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="agents" style="padding: 4rem 0; background-color: var(--color-white);">
+            <div class="container">
+                <div class="text-center" style="margin-bottom: 4rem;">
+                    <h2 class="section-title">Meet Our Dedicated Advisors</h2>
+                    <p class="section-subtitle">Your transaction is handled by Ethiopia's most experienced and trusted agents.</p>
+                </div>
+                
+                <div class="agent-grid">
+                    <div class="agent-card transition">
+                        <img src="realstate/girl.jpg" alt="Agent A">
+                        <h3>W/zo Hana Mekonnen</h3>
+                        <p>Founding Partner</p>
+                        <p>Specializes in residential and high-net-worth clients.</p>
+                    </div>
+                    <div class="agent-card transition">
+                        <img src="realstate/men1.jpg" alt="Agent B">
+                        <h3>Ato Samuel Tola</h3>
+                        <p>Commercial Specialist</p>
+                        <p>Expert in commercial properties and investment land acquisition.</p>
+                    </div>
+                    <div class="agent-card transition">
+                        <img src="realstate/girl1.jpg" alt="Agent C">
+                        <h3>Ms. Eleni Fikru</h3>
+                        <p>Rental & Leasing Manager</p>
+                        <p>Handles all premium rental and short-term lease agreements.</p>
+                    </div>
+                    <div class="agent-card transition">
+                        <img src="realstate/men2.jpg" alt="Agent D">
+                        <h3>Eng. Daniel Zewde</h3>
+                        <p>Construction Liaison</p>
+                        <p>Advises on new construction and project management.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact-form-section" class="contact-form-section">
+            <div class="container">
+                <div class="text-center" style="margin-bottom: 4rem;">
+                    <h2 class="section-title">Request a Private Consultation</h2>
+                    <p class="section-subtitle">Your journey to luxury begins here. Fill out the form below and we'll reach out discreetly.</p>
+                </div>
+                
+                <div class="contact-form-box shadow-2xl">
+                    <form id="main-contact-form">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Full Name</label>
+                            <input type="text" id="name" name="name" required class="form-input" placeholder="Your Full Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" id="email" name="email" required class="form-input" placeholder="your.email@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" required class="form-input" placeholder="+251 9XX XXX XXXX">
+                        </div>
+                        <div class="form-group">
+                            <label for="message" class="form-label">Your Inquiry</label>
+                            <textarea id="message" name="message" rows="5" required class="form-textarea" placeholder="I am interested in a 3-bedroom villa in Bole and would like a call back."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="form-submit-btn">
+                            Submit Request
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="cta-section">
+            <div class="container">
+                <h2 class="cta-title">Ready to find your Estate?</h2>
+                <p class="cta-subtitle">Contact us today for a private, confidential consultation.</p>
+                <a href="#contact-form-section" class="cta-button">
+                    Schedule Consultation
+                </a>
+            </div>
+        </section>
+        
+        <footer id="contact" class="footer">
+            <div class="container">
+                <div class="footer-grid">
+                    
+                    <div>
+                        <a href="#home" class="footer-logo">
+                            <i class="fas fa-crown" style="margin-right: 0.5rem;"></i>
+                            <span>Premier Estate</span>
+                        </a>
+                        <p class="footer-text">Ethiopia's leading luxury real estate firm, delivering excellence and trust in every transaction.</p>
+                    </div>
+                    
+                    <div>
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="#featured">Featured Listings</a></li>
+                            <li><a href="#guide">Investment Guide</a></li>
+                            <li><a href="#agents">Our Advisors</a></li>
+                            <li><a href="#">Careers</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3>Get In Touch</h3>
+                        <div>
+                            <p class="footer-contact-item"><i class="fas fa-phone-alt"></i> +251 940 XXX XXXX</p>
+                            <p class="footer-contact-item"><i class="fas fa-envelope"></i> info@premierestate.com</p>
+                            <p class="footer-contact-item"><i class="fas fa-map-marker-alt"></i> Bole Medhanialem, Sky Building, 10th Floor, Addis Ababa</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3>Newsletter</h3>
+                        <p class="footer-text">Subscribe for exclusive market reports.</p>
+                        <form onsubmit="event.preventDefault(); alert('Thank you for subscribing to our newsletter!'); this.reset();" class="newsletter-form">
+                            <input type="email" placeholder="Your Email" required>
+                            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="copyright">
+                    <p>&copy; 2025 Premier Estate. All Rights Reserved.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuBtn = document.getElementById('menu-btn');
+            const menuIcon = document.getElementById('menu-icon');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('main section');
+            
+            // Modal Elements
+            const searchModal = document.getElementById('search-modal');
+            const searchBtn = document.getElementById('search-modal-btn');
+            const closeModalBtn = document.getElementById('close-modal-btn');
+            const searchForm = document.getElementById('search-form'); 
+            const mainContactForm = document.getElementById('main-contact-form');
+            
+            // --- Mobile Menu Toggle Functionality ---
+            const toggleMobileMenu = () => {
+                const isHidden = mobileMenu.classList.toggle('hidden');
+                if (isHidden) {
+                    menuIcon.classList.replace('fa-times', 'fa-bars');
+                } else {
+                    menuIcon.classList.replace('fa-bars', 'fa-times');
+                }
+            };
+
+            menuBtn.addEventListener('click', toggleMobileMenu);
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        // Close menu after a slight delay to allow smooth scrolling
+                        setTimeout(toggleMobileMenu, 200); 
+                    }
+                });
+            });
+
+            // --- Scrollspy: Active Link Functionality ---
+            const updateActiveNav = () => {
+                let currentSectionId = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    // Offset: Fixed header height (approx 80px)
+                    if (window.scrollY >= sectionTop - 120) { 
+                        currentSectionId = section.getAttribute('id');
+                    }
+                });
+                
+                // Special handling for the very top of the page (Home)
+                if (window.scrollY < sections[0].offsetTop - 120) {
+                    currentSectionId = sections[0].getAttribute('id');
+                }
+
+                // Set active class
+                navLinks.forEach(link => {
+                    link.classList.remove('nav-active');
+                    const linkTarget = link.getAttribute('href').replace('#', '');
+                    
+                    // Handle scrolling to contact-form-section or contact footer
+                    if (linkTarget === currentSectionId || 
+                        (currentSectionId === 'contact-form-section' && linkTarget === 'contact')) {
+                        link.classList.add('nav-active');
+                    } else if (currentSectionId === 'contact' && linkTarget === 'contact-form-section') {
+                        // Keep 'Contact' active if in the footer
+                        document.querySelector('.nav-link[href="#contact-form-section"]').classList.add('nav-active');
+                    }
+                });
+            };
+
+            window.addEventListener('scroll', updateActiveNav);
+            updateActiveNav(); 
+
+            // --- Modal Functionality ---
+            searchBtn.addEventListener('click', () => {
+                searchModal.classList.remove('hidden');
+            });
+
+            closeModalBtn.addEventListener('click', () => {
+                searchModal.classList.add('hidden');
+            });
+
+            // Close when clicking outside
+            searchModal.addEventListener('click', (e) => {
+                if (e.target === searchModal) {
+                    searchModal.classList.add('hidden');
+                }
+            });
+
+            // --- Search Form Submission (Dummy for Front-End) ---
+            if (searchForm) {
+                searchForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    alert('Search submitted! (This data would be sent to a server for actual search results.)');
+                    searchModal.classList.add('hidden');
+                    document.getElementById('featured').scrollIntoView({ behavior: 'smooth' });
+                });
+            }
+            
+            // --- Main Contact Form Submission (Dummy for Front-End) ---
+            if (mainContactForm) {
+                mainContactForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    alert('Thank you! Your consultation request has been received. Our agents will contact you shortly.');
+                    mainContactForm.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>

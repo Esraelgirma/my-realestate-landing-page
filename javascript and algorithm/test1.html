@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome Checker (Pure JS/CSS)</title>
+    <!-- Pure CSS Styles -->
+    <style>
+        /* Global Reset and Typography */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* Light blue-gray background */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            margin: 0;
+        }
+
+        /* Main Container Styling */
+        .container {
+            width: 100%;
+            max-width: 450px;
+            background-color: #ffffff;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e0e7ef;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #333333;
+            margin: 0;
+        }
+
+        .description {
+            font-size: 0.9rem;
+            color: #666666;
+            margin-top: 5px;
+        }
+
+        /* Input Prompt Box */
+        .prompt-box {
+            background-color: #e6f7f3; /* Light teal for prompt */
+            color: #1a7e61;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        /* Input Field */
+        .input-group {
+            margin-bottom: 25px;
+        }
+
+        #text-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ced4da;
+            border-radius: 8px;
+            font-size: 1rem;
+            color: #333;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            box-sizing: border-box; /* Include padding and border in the element's total width and height */
+        }
+
+        #text-input:focus {
+            border-color: #10b981; /* Emerald */
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+        }
+
+        /* Check Button */
+        #check-btn {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: #10b981; /* Emerald */
+            color: white;
+            font-weight: 700;
+            font-size: 1.05rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 6px rgba(16, 185, 129, 0.3);
+        }
+
+        #check-btn:hover {
+            background-color: #059669; /* Darker Emerald */
+            transform: translateY(-1px);
+        }
+
+        #check-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(16, 185, 129, 0.3);
+        }
+
+        /* Result Area */
+        #result-container {
+            margin-top: 30px;
+            min-height: 70px; /* Ensure space even when empty */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #result {
+            width: 100%;
+            text-align: center;
+            font-size: 1.25rem;
+            font-weight: 700;
+            padding: 15px;
+            border-radius: 8px;
+            transition: all 0.5s ease-in-out;
+            color: #333; /* Default text color */
+        }
+        
+        .palindrome {
+            background-color: #d1fae5; /* Light green */
+            color: #065f46; /* Dark green text */
+            border: 1px solid #a7f3d0;
+        }
+        
+        .not-palindrome {
+            background-color: #fee2e2; /* Light red */
+            color: #991b1b; /* Dark red text */
+            border: 1px solid #fecaca;
+        }
+        
+        /* Modal Styling (for alert replacement) */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease-in-out;
+            z-index: 1000;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .custom-modal {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 350px;
+            width: 90%;
+            text-align: center;
+            transform: scale(0.9);
+            transition: transform 0.3s ease-in-out;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-overlay.active .custom-modal {
+            transform: scale(1);
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #dc2626; /* Red 600 */
+            margin-bottom: 15px;
+        }
+
+        .modal-message {
+            color: #4b5563;
+            margin-bottom: 25px;
+        }
+
+        #modal-close-btn {
+            width: 100%;
+            padding: 10px 15px;
+            background-color: #dc2626; /* Red 600 */
+            color: white;
+            font-weight: 600;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        #modal-close-btn:hover {
+            background-color: #b91c1c; /* Darker Red */
+        }
+    </style>
+</head>
+<body>
+
+    <main class="container">
+        <header>
+            <h1>Palindrome Checker</h1>
+            <p class="description">Reads the same forwards and backwards, ignoring punctuation, case, and spacing.</p>
+        </header>
+
+        <section>
+            <div class="prompt-box">
+                <p>Enter text to check:</p>
+            </div>
+            
+            <!-- Input Area -->
+            <div class="input-group">
+                <label for="text-input" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;">Enter Text</label>
+                <input type="text" id="text-input" placeholder="e.g., Madam, I'm Adam" autofocus>
+            </div>
+
+            <!-- Check Button -->
+            <button id="check-btn">
+                Check Palindrome
+            </button>
+        </section>
+
+        <!-- Result Display Area -->
+        <div id="result-container">
+            <p id="result"></p>
+        </div>
+    </main>
+
+    <!-- Custom Modal for "Please input a value" -->
+    <div id="modal-overlay" class="modal-overlay">
+        <div class="custom-modal">
+            <h2 class="modal-title">Input Required</h2>
+            <p id="modal-message" class="modal-message">Please input a value into the text box before checking.</p>
+            <button id="modal-close-btn">
+                Got It
+            </button>
+        </div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Function to sanitize the text for palindrome checking
+        const sanitizeText = (text) => {
+            // Remove all non-alphanumeric characters (including spaces, punctuation, and symbols)
+            // and convert to lowercase
+            return text.replace(/[^A-Za-z0-9]/g, '').toLowerCase();
+        };
+
+        // Main check function
+        const isPalindrome = (cleanedText) => {
+            // Check if the cleaned text is equal to its reverse
+            const reversedText = cleanedText.split('').reverse().join('');
+            return cleanedText === reversedText;
+        };
+
+        // DOM Elements
+        const textInput = document.getElementById('text-input');
+        const checkBtn = document.getElementById('check-btn');
+        const resultElement = document.getElementById('result');
+        const modalOverlay = document.getElementById('modal-overlay');
+        const modalMessage = document.getElementById('modal-message');
+        const modalCloseBtn = document.getElementById('modal-close-btn');
+
+        // Modal Handlers
+        const showModal = (message) => {
+            modalMessage.textContent = message;
+            modalOverlay.classList.add('active');
+            textInput.focus(); // Keep focus on the input after closing
+        };
+
+        const hideModal = () => {
+            modalOverlay.classList.remove('active');
+        };
+
+        // Event Handler for Check Button
+        const handleCheck = () => {
+            const originalText = textInput.value;
+
+            // Clear previous result styling
+            resultElement.textContent = ''; 
+            resultElement.className = '';
+
+            // 1. Handle empty input (User Story: show alert/modal)
+            if (originalText.trim() === '') {
+                showModal('Please input a value.');
+                return;
+            }
+
+            // 2. Sanitize and Check
+            const cleanedText = sanitizeText(originalText);
+            
+            // Check if, after cleaning, the string is effectively empty (e.g. only punctuation was entered)
+            if (cleanedText.length === 0) {
+                 // For strings like ".,!?" which become empty after cleaning, they are not palindromes
+                 resultElement.textContent = `${originalText} is not a palindrome.`;
+                 resultElement.classList.add('not-palindrome');
+                 return;
+            }
+
+            // 3. Determine and display result
+            const resultIsPalindrome = isPalindrome(cleanedText);
+
+            if (resultIsPalindrome) {
+                resultElement.textContent = `${originalText} is a palindrome.`;
+                resultElement.classList.add('palindrome');
+            } else {
+                resultElement.textContent = `${originalText} is not a palindrome.`;
+                resultElement.classList.add('not-palindrome');
+            }
+        };
+
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            checkBtn.addEventListener('click', handleCheck);
+            modalCloseBtn.addEventListener('click', hideModal);
+            
+            // Allow Enter key to trigger check
+            textInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    handleCheck();
+                }
+            });
+            
+            // Close modal when clicking outside of it
+            modalOverlay.addEventListener('click', (e) => {
+                if (e.target === modalOverlay) {
+                    hideModal();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

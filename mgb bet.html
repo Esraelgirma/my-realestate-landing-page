@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="am" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ሰዋ የባህል አዳራሽ - ባህላዊ ምግብ ቤት እና መዝናኛ</title>
+    
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Load Font Awesome Icons (for cultural and food icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts: Inter (Professional and legible) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f3f0; /* Off-white / Creamy background */
+        }
+        .primary-color { background-color: #A31B2C; } /* Deep Maroon Red */
+        .accent-color { color: #D9A01E; } /* Traditional Gold/Amber */
+        .border-accent { border-color: #D9A01E; }
+        .bg-secondary { background-color: #1a202c; } /* Dark Slate for contrast */
+        .hero-bg {
+            /* Warm, inviting background */
+            background-image: linear-gradient(rgba(163, 27, 44, 0.7), rgba(163, 27, 44, 0.9)), 
+                              url('https://placehold.co/1920x1080/4f2a35/ffffff?text=Traditional+Ethiopian+Cultural+Hall+Interior');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Testimonial Slider Styles */
+        .testimonial-container {
+            overflow: hidden;
+            width: 100%;
+        }
+        .testimonial-slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .testimonial-card {
+            min-width: 100%; /* For mobile */
+            flex: 0 0 auto;
+            margin: 0 1rem;
+        }
+        @media (min-width: 768px) {
+            .testimonial-card {
+                min-width: calc(50% - 2rem); /* Show two cards on desktop */
+            }
+        }
+    </style>
+</head>
+<body class="text-gray-900">
+
+    <!-- Header and Navigation (Maroon Red and Sticky) -->
+    <header class="primary-color sticky top-0 left-0 right-0 z-50 shadow-xl">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <!-- Logo (Cultural/Gold Accent) -->
+            <a href="#home" class="flex items-center space-x-2 text-3xl font-black text-white tracking-wider">
+                <i class="fas fa-utensils accent-color"></i>
+                <span>ሰዋ የባህል አዳራሽ</span>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden lg:flex items-center space-x-8 text-lg font-medium">
+                <a href="#home" class="text-white hover:text-amber-300 transition">ዋና ገጽ</a>
+                <a href="#about" class="text-white hover:text-amber-300 transition">ስለ እኛ</a>
+                <a href="#menu" class="text-white hover:text-amber-300 transition">ምግብ እና መጠጥ</a>
+                <a href="#gallery" class="text-white hover:text-amber-300 transition">የፎቶ ማዕከል</a>
+                <a href="#testimonials" class="text-white hover:text-amber-300 transition">የደንበኛ ምስክርነት</a>
+                <a href="#contact" class="text-white hover:text-amber-300 transition">ቦታ እና መገኛ</a>
+            </nav>
+
+            <!-- Reservation Button -->
+            <button onclick="alertPlaceholder('ቦታ ማስያዝ ፎርም እዚህ ይከፈታል!')" class="hidden lg:block bg-amber-400 hover:bg-amber-500 text-red-900 font-extrabold py-2 px-6 rounded-full transition transform hover:scale-105">
+                ቦታ ያስይዙ
+            </button>
+
+            <!-- Menu Button (for Mobile/Tablet) -->
+            <button id="menu-btn" class="lg:hidden text-3xl text-white p-2 rounded-lg hover:bg-red-800 transition">
+                <i class="fas fa-bars" id="menu-icon"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu (Dropdown) -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-red-800 border-t border-red-700 shadow-xl">
+            <nav class="flex flex-col p-4 space-y-2">
+                <a href="#home" class="mobile-link py-2 px-3 text-white hover:bg-red-700 rounded-lg transition"><i class="fas fa-home accent-color w-6"></i> ዋና ገጽ</a>
+                <a href="#about" class="mobile-link py-2 px-3 text-white hover:bg-red-700 rounded-lg transition"><i class="fas fa-info-circle accent-color w-6"></i> ስለ እኛ</a>
+                <a href="#menu" class="mobile-link py-2 px-3 text-white hover:bg-red-700 rounded-lg transition"><i class="fas fa-book-open accent-color w-6"></i> ምግብ እና መጠጥ</a>
+                <a href="#gallery" class="mobile-link py-2 px-3 text-white hover:bg-red-700 rounded-lg transition"><i class="fas fa-camera accent-color w-6"></i> የፎቶ ማዕከል</a>
+                <a href="#testimonials" class="mobile-link py-2 px-3 text-white hover:bg-red-700 rounded-lg transition"><i class="fas fa-star accent-color w-6"></i> የደንበኛ ምስክርነት</a>
+                <a href="#contact" class="mobile-link py-2 px-3 text-white hover:bg-red-700 rounded-lg transition"><i class="fas fa-map-marker-alt accent-color w-6"></i> ቦታ እና መገኛ</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Home/Hero Section (High Cultural Impact) -->
+        <section id="home" class="hero-bg min-h-[90vh] flex items-center justify-center text-white text-center">
+            <div class="container mx-auto px-6 py-16">
+                <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-6 tracking-wide">ባህል፣ ጣዕም እና ቅምሻ</h1>
+                <p class="text-xl md:text-2xl font-light mb-10 max-w-4xl mx-auto text-red-200">በአዲስ አበባ ልብ ውስጥ የኢትዮጵያን የበዓል፣ የሙዚቃ እና የመስተንግዶ ድባብ ይለማመዱ።</p>
+                
+                <button onclick="document.querySelector('#menu').scrollIntoView({ behavior: 'smooth' });" class="bg-amber-400 hover:bg-amber-500 text-red-900 font-extrabold text-lg py-3 px-10 rounded-full shadow-2xl transition transform hover:scale-105">
+                    የእኛን ምናሌ ይመልከቱ <i class="fas fa-angle-down ml-2"></i>
+                </button>
+            </div>
+        </section>
+        
+        <!-- About/History Section -->
+        <section id="about" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="lg:order-1 order-2">
+                    <h2 class="text-4xl font-extrabold text-red-700 mb-4">ሰዋ: የዘመን ተሻጋሪ ውበት መድረክ</h2>
+                    <p class="text-gray-600 text-lg mb-6">ሰዋ የባህል አዳራሽ በኢትዮጵያ የባህል ምግብ ቤቶች ውስጥ ግንባር ቀደም ነው። ቦታችን የተመረጠው በካሊቲ ቶታል አካባቢ ሲሆን፣ ለሁሉም እንግዶች በቀላሉ ተደራሽ ነው። እኛ ባህላዊ ምግቦችን፣ እንደ **ጤፍ እንጀራ፣ ዶሮ ወጥ፣ ክትፎ** እና ሌሎችም በተለየ ሁኔታ እናዘጋጃለን።</p>
+                    <p class="text-gray-600 text-lg">በተጨማሪም የባህል መጠጦችን ማለትም **ንፁህ ጤጥ፣ ጠላ እና አረቄ**ን በከፍተኛ ጥራት በማቅረብ እናስተናግዳለን። እያንዳንዱ ዝግጅታችን የኢትዮጵያን ታሪክና የህዝቧን ሙቀት ያንፀባርቃል።</p>
+                    <button onclick="document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' });" class="mt-6 bg-red-700 hover:bg-red-800 text-white font-semibold py-3 px-8 rounded-lg transition">
+                        ክብረ በዓል ያዘጋጁ
+                    </button>
+                </div>
+                <!-- Placeholder Image for Cultural Interior -->
+                <div class="lg:order-2 order-1 relative">
+                    <img src="https://placehold.co/600x400/D9A01E/A31B2C?text=Sewa+Cultural+Interior" alt="" class="rounded-xl shadow-2xl w-full border-4 border-amber-400">
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu Highlights Section -->
+        <section id="menu" class="py-16 md:py-24 primary-color text-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-extrabold accent-color mb-2">የእኛ ልዩ ምግቦች እና መጠጦች</h2>
+                    <p class="text-red-200 text-lg">ከባህላዊ የምግብ ጥበብ የተገኙ፣ ትኩስ እና ጣፋጭ ምርጫዎች።</p>
+                </div>
+
+                <!-- Menu Cards Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    
+                    <!-- Food Item 1: Doro Wot -->
+                    <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-[1.03] transition duration-300">
+                        <img src="https://placehold.co/400x300/A31B2C/D9A01E?text=Doro+Wot+with+Injera" alt="" class="w-full h-48 object-cover">
+                        <div class="p-4 text-center">
+                            <h3 class="text-2xl font-bold text-red-700 mb-1">የዶሮ ወጥ (ልዩ)</h3>
+                            <p class="text-gray-600 text-sm mb-3">በጥራት እና በትዕግስት የተሰራ ንፁህ የዶሮ ወጥ።</p>
+                            <p class="text-3xl font-black accent-color">350 ብር</p>
+                        </div>
+                    </div>
+
+                    <!-- Food Item 2: Kitfo -->
+                    <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-[1.03] transition duration-300">
+                        <img src="https://placehold.co/400x300/D9A01E/A31B2C?text=Traditional+Kitfo" alt="" class="w-full h-48 object-cover">
+                        <div class="p-4 text-center">
+                            <h3 class="text-2xl font-bold text-red-700 mb-1">ከትፎ (የተፈተገ)</h3>
+                            <p class="text-gray-600 text-sm mb-3">ትኩስ እና በቅቤ የተቀመመ፣ በጎመንና በአይብ የታጀበ።</p>
+                            <p class="text-3xl font-black accent-color">400 ብር</p>
+                        </div>
+                    </div>
+
+                    <!-- Drink Item 3: Tej (Traditional Beverage) -->
+                    <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-[1.03] transition duration-300">
+                        <img src="https://placehold.co/400x300/7C2D12/D9A01E?text=Tej+in+Birille" alt="" class="w-full h-48 object-cover">
+                        <div class="p-4 text-center">
+                            <h3 class="text-2xl font-bold text-red-700 mb-1">ንፁህ ጤጥ</h3>
+                            <p class="text-gray-600 text-sm mb-3">በንፁህ ማር ብቻ የተጠመቀ ባህላዊ የጤጥ መጠጥ።</p>
+                            <p class="text-3xl font-black accent-color">ብርሌ / 150 ብር</p>
+                        </div>
+                    </div>
+
+                    <!-- Drink Item 4: Tella (Traditional Beverage) -->
+                    <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-[1.03] transition duration-300">
+                        <img src="https://placehold.co/400x300/4B5563/D9A01E?text=Tella+Traditional+Beer" alt="" class="w-full h-48 object-cover">
+                        <div class="p-4 text-center">
+                            <h3 class="text-2xl font-bold text-red-700 mb-1">ጠላ (የቤት አሰራር)</h3>
+                            <p class="text-gray-600 text-sm mb-3">ከገብስና ከበቆሎ ተዘጋጅቶ በንፅህና የተጠመቀ ጠላ።</p>
+                            <p class="text-3xl font-black accent-color">100 ብር</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-12">
+                    <button onclick="alertPlaceholder('ሙሉ የምግብ እና የመጠጥ ዝርዝር PDF እዚህ ይወርዳል!')" class="border-2 border-amber-400 text-amber-400 hover:bg-amber-400 hover:text-red-900 font-bold py-3 px-10 rounded-full shadow-lg transition transform hover:scale-105">
+                        ሙሉውን ምናሌ ይመልከቱ
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="py-16 md:py-24 bg-white">
+             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-extrabold text-red-700 mb-2">የሰዋ የፎቶ ማዕከል</h2>
+                    <p class="text-gray-600 text-lg">የባህላዊ አዳራሻችንን ድምቀት እና የውስጥ ውበት ይመልከቱ።</p>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <img src="https://placehold.co/600x400/D9A01E/A31B2C?text=Cultural+Musicians" alt="" class="w-full h-full object-cover rounded-lg shadow-md hover:opacity-90 transition duration-300 cursor-pointer">
+                    <img src="https://placehold.co/600x400/A31B2C/D9A01E?text=Traditional+Coffee+Ceremony" alt="" class="w-full h-full object-cover rounded-lg shadow-md hover:opacity-90 transition duration-300 cursor-pointer">
+                    <img src="https://placehold.co/600x400/7C2D12/D9A01E?text=Atmosphere+and+Decor" alt="" class="w-full h-full object-cover rounded-lg shadow-md hover:opacity-90 transition duration-300 cursor-pointer">
+                    <img src="https://placehold.co/600x400/1a202c/A31B2C?text=Traditional+Mesa+Tables" alt="" class="w-full h-full object-cover rounded-lg shadow-md hover:opacity-90 transition duration-300 cursor-pointer">
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section (Slider) -->
+        <section id="testimonials" class="py-16 md:py-24 bg-gray-50">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-extrabold text-red-700 mb-2">የደንበኛ ምስክርነት</h2>
+                    <p class="text-gray-600 text-lg">እንግዶቻችን ስለ ሰዋ የሰጡት አስተያየት።</p>
+                </div>
+                
+                <div class="testimonial-container relative">
+                    <div class="testimonial-slider" id="testimonial-slider">
+                        
+                        <!-- Testimonial Card 1 -->
+                        <div class="testimonial-card bg-white p-8 rounded-xl shadow-lg border border-red-100">
+                            <i class="fas fa-quote-left text-3xl accent-color mb-4"></i>
+                            <p class="text-lg italic text-gray-700 mb-4">"በሰዋ ያሳለፍነው ምሽት የማይረሳ ነበር! የዶሮ ወጡ ጣዕም ልክ እንደ አያቴ ቤት ነው። ንፁህ ጤጡ ደግሞ ልዩ ነው። ከባቢው በጣም ባህላዊ እና ሙቀት የተሞላበት ነው።"</p>
+                            <div class="flex items-center">
+                                <img src="https://placehold.co/60x60/D9A01E/A31B2C?text=A" alt="" class="w-12 h-12 rounded-full mr-4">
+                                <div>
+                                    <p class="font-bold text-red-700">አቶ ሙሉጌታ አበበ</p>
+                                    <p class="text-sm text-gray-500">ተደጋጋሚ ደንበኛ</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Testimonial Card 2 -->
+                        <div class="testimonial-card bg-white p-8 rounded-xl shadow-lg border border-red-100">
+                            <i class="fas fa-quote-left text-3xl accent-color mb-4"></i>
+                            <p class="text-lg italic text-gray-700 mb-4">"የቦታ ማስያዝ ሂደቱ ቀላል ነበር። አዳራሹ ለሰርግ ዝግጅት በጣም ተስማሚ ነው። ለውጭ እንግዶቼ የኢትዮጵያን ባህል ለማሳየት ምርጥ ቦታ ነበር። አገልግሎቱ ፈጣንና ከአክብሮት ጋር የቀረበ ነው።"</p>
+                            <div class="flex items-center">
+                                <img src="https://placehold.co/60x60/A31B2C/D9A01E?text=B" alt="" class="w-12 h-12 rounded-full mr-4">
+                                <div>
+                                    <p class="font-bold text-red-700">ወ/ሮ ሜሮን ታደሰ</p>
+                                    <p class="text-sm text-gray-500">የሠርግ አዘጋጅ</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Testimonial Card 3 -->
+                        <div class="testimonial-card bg-white p-8 rounded-xl shadow-lg border border-red-100">
+                            <i class="fas fa-quote-left text-3xl accent-color mb-4"></i>
+                            <p class="text-lg italic text-gray-700 mb-4">"ከሰዋ የተሻለ ትኩስ ክትፎ ቀምሼ አላውቅም። ጠላው ደግሞ የገጠርን ድባብ ያስታውሰኛል። ቦታው ሰፊና ለቤተሰብም ሆነ ለጓደኛ መዝናኛ እጅግ በጣም ተስማሚ ነው።"</p>
+                            <div class="flex items-center">
+                                <img src="https://placehold.co/60x60/1a202c/D9A01E?text=C" alt="" class="w-12 h-12 rounded-full mr-4">
+                                <div>
+                                    <p class="font-bold text-red-700">አቶ ያሬድ ካሳ</p>
+                                    <p class="text-sm text-gray-500">የምግብ ተቺ</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Testimonial Card 4 -->
+                        <div class="testimonial-card bg-white p-8 rounded-xl shadow-lg border border-red-100">
+                            <i class="fas fa-quote-left text-3xl accent-color mb-4"></i>
+                            <p class="text-lg italic text-gray-700 mb-4">"የተለያዩ የክልል ምግቦች በአንድ ላይ ማግኘቱ በጣም አስደሳች ነው። ሰዋ ትክክለኛ የኢትዮጵያ ምግብና ባህልን ይወክላል። ለስራ ባልደረቦችም እመክራለሁ።"</p>
+                            <div class="flex items-center">
+                                <img src="https://placehold.co/60x60/D9A01E/A31B2C?text=D" alt="" class="w-12 h-12 rounded-full mr-4">
+                                <div>
+                                    <p class="font-bold text-red-700">ወ/ት ፋጡማ አደም</p>
+                                    <p class="text-sm text-gray-500">ጎብኚ</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- Slider Navigation -->
+                    <button onclick="moveSlider(-1)" class="absolute left-0 top-1/2 -translate-y-1/2 bg-red-700 text-white p-3 rounded-full shadow-lg hover:bg-red-900 transition ml-2"><i class="fas fa-angle-left"></i></button>
+                    <button onclick="moveSlider(1)" class="absolute right-0 top-1/2 -translate-y-1/2 bg-red-700 text-white p-3 rounded-full shadow-lg hover:bg-red-900 transition mr-2"><i class="fas fa-angle-right"></i></button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Contact and Location Section -->
+        <section id="contact" class="py-16 md:py-24 primary-color text-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-3 gap-12">
+                
+                <!-- Contact Info -->
+                <div>
+                    <h2 class="text-3xl font-extrabold accent-color mb-6">አግኙን እና ቦታችን</h2>
+                    <div class="space-y-6 text-red-200 text-lg">
+                        <p><i class="fas fa-map-marker-alt accent-color w-6"></i> **አድራሻ:** ካሊቲ ቶታል አካባቢ፣ ዋናው መንገድ</p>
+                        <p><i class="fas fa-phone-alt accent-color w-6"></i> **ስልክ ቁጥር:** +251 911 XXX XXXX / +251 920 XXX XXXX</p>
+                        <p><i class="fas fa-envelope accent-color w-6"></i> **ኢሜይል:** info@sewaculturalhall.com</p>
+                        <p><i class="fas fa-clock accent-color w-6"></i> **የስራ ሰዓት:** ከሰኞ እስከ እሁድ፣ ከጧት 11፡00 ሰዓት እስከ ምሽት 4፡00 ሰዓት</p>
+                    </div>
+                </div>
+
+                <!-- Google Maps Placeholder -->
+                <div class="lg:col-span-2">
+                    <h3 class="text-2xl font-bold mb-4 accent-color">በካርታ ላይ ይመልከቱ</h3>
+                    <div class="bg-white rounded-xl shadow-2xl overflow-hidden h-72 w-full border-4 border-amber-400">
+                        <!-- Simulated Map Placeholder -->
+                        <img src="https://placehold.co/800x400/D9A01E/A31B2C?text=Map+Placeholder+-+Kality+Total" alt="" class="w-full h-full object-cover opacity-80">
+                        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                            <p class="text-red-900 text-2xl font-bold bg-white/70 p-2 rounded-lg">ካሊቲ ቶታል አካባቢ</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white py-6">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-gray-400 text-sm">&copy; 2025 ሰዋ የባህል አዳራሽ. ሁሉም መብቶች የተጠበቁ ናቸው።</p>
+            <div class="flex justify-center space-x-4 mt-3">
+                <a href="#" class="text-gray-400 hover:text-amber-400 transition"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-gray-400 hover:text-amber-400 transition"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-gray-400 hover:text-amber-400 transition"><i class="fab fa-telegram-plane"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Simple Message Box for Alert replacement -->
+    <div id="message-box" class="fixed inset-0 bg-black bg-opacity-70 hidden items-center justify-center p-4 z-[99]">
+        <div class="bg-white p-6 rounded-xl shadow-2xl max-w-sm w-full text-center transform scale-100 transition-all duration-300 ease-in-out">
+            <i class="fas fa-check-circle text-4xl accent-color mb-3"></i>
+            <p id="message-text" class="text-lg font-semibold text-gray-800 mb-4"></p>
+            <button onclick="closeMessageBox()" class="bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-6 rounded-full transition">እሺ</button>
+        </div>
+    </div>
+
+
+    <script>
+        // --- Global Variables ---
+        const menuBtn = document.getElementById('menu-btn');
+        const menuIcon = document.getElementById('menu-icon');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        const messageBox = document.getElementById('message-box');
+        const messageText = document.getElementById('message-text');
+
+        // --- Utility: Replaces alert() ---
+        function alertPlaceholder(message) {
+            messageText.textContent = message;
+            messageBox.classList.remove('hidden');
+            messageBox.classList.add('flex');
+        }
+
+        function closeMessageBox() {
+            messageBox.classList.add('hidden');
+            messageBox.classList.remove('flex');
+        }
+
+        // --- Mobile Menu Toggle Functionality ---
+        const toggleMobileMenu = () => {
+            const isHidden = mobileMenu.classList.toggle('hidden');
+            if (isHidden) {
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            } else {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-times');
+            }
+        };
+
+        // --- Testimonial Slider Logic ---
+        let currentIndex = 0;
+        let cardWidth = 0;
+        const slider = document.getElementById('testimonial-slider');
+        const cards = document.querySelectorAll('.testimonial-card');
+        const totalCards = cards.length;
+
+        function updateCardWidth() {
+            // Recalculate card width based on current viewport size
+            const containerWidth = slider.parentElement.offsetWidth;
+            if (window.innerWidth >= 768) {
+                // Show 2 cards at a time + margin (2rem or 32px total margin per card)
+                cardWidth = (containerWidth / 2) - 32; 
+            } else {
+                // Show 1 card at a time + margin (2rem or 32px total margin per card)
+                cardWidth = containerWidth - 32;
+            }
+            // Set the calculated min-width to cards
+            cards.forEach(card => card.style.minWidth = `${cardWidth}px`);
+        }
+
+        function moveSlider(direction) {
+            currentIndex += direction;
+
+            // Loop logic
+            if (currentIndex < 0) {
+                currentIndex = totalCards - (window.innerWidth >= 768 ? 2 : 1); // Go to the last visible set
+            } else if (currentIndex > totalCards - (window.innerWidth >= 768 ? 2 : 1)) {
+                currentIndex = 0; // Go back to the start
+            }
+
+            // Calculate the total scroll offset (including the 1rem margin between cards)
+            let offset = currentIndex * (cardWidth + 32); 
+            slider.style.transform = `translateX(-${offset}px)`;
+        }
+
+
+        // --- Initializers ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set up Menu Listener
+            menuBtn.addEventListener('click', toggleMobileMenu);
+
+            // Close menu when a mobile link is clicked
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        setTimeout(toggleMobileMenu, 200); 
+                    }
+                });
+            });
+            
+            // Initialize slider and add resize listener
+            updateCardWidth();
+            window.addEventListener('resize', () => {
+                updateCardWidth();
+                moveSlider(0); // Reset position after resize
+            });
+            
+             // Start auto-play for testimonials (optional)
+            setInterval(() => moveSlider(1), 5000); // Change testimonial every 5 seconds
+        });
+    </script>
+</body>
+</html>
+

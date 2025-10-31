@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esrael Girma | Frontend Developer Portfolio</title>
+    
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Load Lucide Icons for professional look -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Fonts: Inter - Professional and modern font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Tailwind slate-50 */
+            color: #1e293b; /* Tailwind slate-800 */
+        }
+        /* Custom Colors for Professional Theme */
+        .primary-bg { background-color: #1e293b; } /* Deep Slate Blue */
+        .accent-color { color: #0EA5E9; } /* Sky Blue Accent */
+        .accent-bg { background-color: #0EA5E9; }
+        .card-shadow { box-shadow: 0 10px 25px rgba(30, 41, 59, 0.08); }
+        .project-img {
+            transition: transform 0.3s ease-in-out;
+        }
+        .project-card:hover .project-img {
+            transform: scale(1.05);
+        }
+        
+        /* Utility for Lucide Icons */
+        .icon {
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            fill: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header and Navigation (Sticky and Dark) -->
+    <header class="primary-bg sticky top-0 z-50 shadow-xl">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <!-- Logo/Name -->
+            <a href="#home" class="text-3xl font-extrabold text-white tracking-wider">
+                Esrael<span class="accent-color">.dev</span>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center space-x-6 text-lg font-medium">
+                <a href="#about" class="text-white hover:text-sky-400 transition">About</a>
+                <a href="#skills" class="text-white hover:text-sky-400 transition">Skills</a>
+                <a href="#projects" class="text-white hover:text-sky-400 transition">Projects</a>
+                <a href="#contact" class="text-white hover:text-sky-400 transition">Contact</a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button id="menu-btn" class="md:hidden text-2xl text-white p-2 rounded-lg hover:bg-slate-700 transition">
+                <i data-lucide="menu" class="icon w-8 h-8"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu (Dropdown) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-800 border-t border-slate-700 shadow-xl">
+            <nav class="flex flex-col p-4 space-y-2">
+                <a href="#about" class="mobile-link py-2 px-3 text-white hover:bg-slate-700 rounded-lg transition">About</a>
+                <a href="#skills" class="mobile-link py-2 px-3 text-white hover:bg-slate-700 rounded-lg transition">Skills</a>
+                <a href="#projects" class="mobile-link py-2 px-3 text-white hover:bg-slate-700 rounded-lg transition">Projects</a>
+                <a href="#contact" class="mobile-link py-2 px-3 text-white hover:bg-slate-700 rounded-lg transition">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section (Focus on Identity and Call to Action) -->
+        <section id="home" class="min-h-[90vh] flex items-center justify-center text-center bg-gray-100 py-20">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+                <p class="text-xl font-medium text-gray-500 mb-4">Hello, I'm</p>
+                <h1 class="text-6xl sm:text-7xl lg:text-8xl font-black mb-6 leading-tight">
+                    Esrael <span class="accent-color">Girma</span>
+                </h1>
+                <h2 class="text-3xl font-light mb-10 text-slate-700">
+                    A Passionate <span class="font-semibold text-blue-700">Frontend Developer</span> building modern and responsive web applications.
+                </h2>
+                
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                    <a href="#projects" class="accent-bg hover:bg-sky-600 text-white font-bold text-lg py-3 px-8 rounded-full shadow-lg transition transform hover:scale-105 flex items-center justify-center">
+                        <i data-lucide="folder-open" class="icon w-5 h-5 mr-2"></i> View Projects
+                    </a>
+                    <a href="#contact" class="border-2 border-slate-800 text-slate-800 hover:bg-slate-800 hover:text-white font-bold text-lg py-3 px-8 rounded-full shadow-lg transition transform hover:scale-105 flex items-center justify-center">
+                        <i data-lucide="mail" class="icon w-5 h-5 mr-2"></i> Get In Touch
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- About Me Section -->
+        <section id="about" class="py-20 md:py-32 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+                <h3 class="text-sm font-semibold uppercase tracking-widest accent-color mb-3 text-center">Who I Am</h3>
+                <h2 class="text-4xl lg:text-5xl font-extrabold text-center mb-12 text-slate-800">About Me</h2>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
+                    <!-- Profile Image Placeholder -->
+                    <div class="lg:col-span-1 flex justify-center">
+                        <img src="images/admin esru.jpg" alt="" class="w-64 h-64 rounded-full object-cover border-4 border-sky-500 shadow-2xl">
+                    </div>
+
+                    <!-- Description -->
+                    <div class="lg:col-span-2 text-lg text-gray-600 space-y-6">
+                        <p>I'm Esrael Girma, a dedicated Frontend Developer with **3 years of professional experience** crafting aesthetically pleasing, intuitive, and performant user interfaces. My primary focus is transforming complex design ideas into seamless, pixel-perfect web experiences.</p>
+                        <p>I specialize in modern JavaScript frameworks, particularly **React** and **Angular**, and I have a strong commitment to writing clean, maintainable, and scalable code. I prioritize accessibility and responsiveness, ensuring every application provides an excellent user experience across all devices.</p>
+                        <p>When I'm not coding, I enjoy learning new UI/UX trends and contributing to open-source projects. Let's build something amazing together!</p>
+                        <a href="#" onclick="alertPlaceholder('Downloading Esrael Girma\'s Resume...')" class="inline-flex items-center accent-color font-bold hover:underline transition">
+                            Download Resume <i data-lucide="download" class="icon w-5 h-5 ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 md:py-32 primary-bg text-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+                <h3 class="text-sm font-semibold uppercase tracking-widest text-sky-400 mb-3 text-center">My Toolbox</h3>
+                <h2 class="text-4xl lg:text-5xl font-extrabold text-center mb-16">Core Skills & Technologies</h2>
+
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8">
+                    <!-- Skill Card 1: React -->
+                    <div class="p-6 bg-slate-800 rounded-xl card-shadow text-center transform hover:scale-105 transition duration-300 border-b-4 border-sky-500">
+                        <i data-lucide="react" class="icon w-10 h-10 accent-color mx-auto mb-3"></i>
+                        <h4 class="text-xl font-semibold">React.js</h4>
+                        <p class="text-gray-400 text-sm">Hooks, Context API, Redux (Mock)</p>
+                    </div>
+
+                    <!-- Skill Card 2: Angular -->
+                    <div class="p-6 bg-slate-800 rounded-xl card-shadow text-center transform hover:scale-105 transition duration-300 border-b-4 border-sky-500">
+                        <i data-lucide="angular" class="icon w-10 h-10 accent-color mx-auto mb-3"></i>
+                        <h4 class="text-xl font-semibold">Angular</h4>
+                        <p class="text-gray-400 text-sm">RxJS, Signals, Standalone Components</p>
+                    </div>
+
+                    <!-- Skill Card 3: JavaScript/TypeScript -->
+                    <div class="p-6 bg-slate-800 rounded-xl card-shadow text-center transform hover:scale-105 transition duration-300 border-b-4 border-sky-500">
+                        <i data-lucide="code" class="icon w-10 h-10 accent-color mx-auto mb-3"></i>
+                        <h4 class="text-xl font-semibold">JS / TypeScript</h4>
+                        <p class="text-gray-400 text-sm">ES6+, Clean Code Practices</p>
+                    </div>
+
+                    <!-- Skill Card 4: Tailwind CSS -->
+                    <div class="p-6 bg-slate-800 rounded-xl card-shadow text-center transform hover:scale-105 transition duration-300 border-b-4 border-sky-500">
+                        <i data-lucide="zap" class="icon w-10 h-10 accent-color mx-auto mb-3"></i>
+                        <h4 class="text-xl font-semibold">Tailwind CSS</h4>
+                        <p class="text-gray-400 text-sm">Utility-First Styling, Responsiveness</p>
+                    </div>
+                    
+                    <!-- Skill Card 5: HTML5 & CSS3 -->
+                    <div class="p-6 bg-slate-800 rounded-xl card-shadow text-center transform hover:scale-105 transition duration-300 border-b-4 border-sky-500">
+                        <i data-lucide="layout-grid" class="icon w-10 h-10 accent-color mx-auto mb-3"></i>
+                        <h4 class="text-xl font-semibold">HTML5 & CSS3</h4>
+                        <p class="text-gray-400 text-sm">Semantic Markup, Flexbox, Grid</p>
+                    </div>
+                    
+                    <!-- Skill Card 6: Git -->
+                    <div class="p-6 bg-slate-800 rounded-xl card-shadow text-center transform hover:scale-105 transition duration-300 border-b-4 border-sky-500">
+                        <i data-lucide="git-branch" class="icon w-10 h-10 accent-color mx-auto mb-3"></i>
+                        <h4 class="text-xl font-semibold">Version Control</h4>
+                        <p class="text-gray-400 text-sm">Git, GitHub/GitLab Workflow</p>
+                    </div>
+
+                    <!-- Skill Card 7: Testing -->
+                    <div class="p-6 bg-slate-800 rounded-xl card-shadow text-center transform hover:scale-105 transition duration-300 border-b-4 border-sky-500">
+                        <i data-lucide="test-tube" class="icon w-10 h-10 accent-color mx-auto mb-3"></i>
+                        <h4 class="text-xl font-semibold">Testing</h4>
+                        <p class="text-gray-400 text-sm">Jest, React Testing Library</p>
+                    </div>
+                    
+                    <!-- Skill Card 8: UI/UX -->
+                    <div class="p-6 bg-slate-800 rounded-xl card-shadow text-center transform hover:scale-105 transition duration-300 border-b-4 border-sky-500">
+                        <i data-lucide="sparkles" class="icon w-10 h-10 accent-color mx-auto mb-3"></i>
+                        <h4 class="text-xl font-semibold">UI/UX Principles</h4>
+                        <p class="text-gray-400 text-sm">Figma, Accessibility (A11Y)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 md:py-32 bg-gray-50">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+                <h3 class="text-sm font-semibold uppercase tracking-widest accent-color mb-3 text-center">My Work</h3>
+                <h2 class="text-4xl lg:text-5xl font-extrabold text-center mb-16 text-slate-800">Featured Projects</h2>
+
+                <div class="space-y-16">
+                    
+                    <!-- Project 1: E-commerce Platform -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 project-card bg-white p-6 rounded-xl card-shadow">
+                        <div class="lg:order-1 order-2">
+                            <h3 class="text-3xl font-bold mb-3 text-slate-800">Enterprise E-Commerce Platform</h3>
+                            <p class="text-gray-600 mb-4">A full-featured shopping platform built for high concurrency and complex state management. Features include secure checkout, product filtering, and internationalization.</p>
+                            
+                            <!-- Tech Stack -->
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="bg-sky-100 text-sky-800 text-sm font-medium px-3 py-1 rounded-full">React</span>
+                                <span class="bg-sky-100 text-sky-800 text-sm font-medium px-3 py-1 rounded-full">Redux (Mock)</span>
+                                <span class="bg-sky-100 text-sky-800 text-sm font-medium px-3 py-1 rounded-full">TypeScript</span>
+                                <span class="bg-sky-100 text-sky-800 text-sm font-medium px-3 py-1 rounded-full">Tailwind CSS</span>
+                            </div>
+
+                            <!-- Links -->
+                            <div class="flex space-x-4">
+                                <a href="#" onclick="alertPlaceholder('Live Demo is currently unavailable for this mock project.')" class="accent-bg hover:bg-sky-600 text-white font-semibold py-2 px-5 rounded-full transition flex items-center">
+                                    <i data-lucide="external-link" class="icon w-4 h-4 mr-2"></i> Live Demo
+                                </a>
+                                <a href="#" onclick="alertPlaceholder('GitHub repository link for this mock project.')" class="border border-slate-400 text-slate-800 hover:bg-slate-100 font-semibold py-2 px-5 rounded-full transition flex items-center">
+                                    <i data-lucide="github" class="icon w-4 h-4 mr-2"></i> GitHub
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Project Image Placeholder -->
+                        <div class="lg:order-2 order-1 overflow-hidden rounded-lg shadow-xl">
+                            <img src="https://placehold.co/600x400/0EA5E9/1e293b?text=E-Commerce+React+App" alt="" class="w-full h-full object-cover project-img">
+                        </div>
+                    </div>
+
+                    <!-- Project 2: Data Dashboard -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 project-card bg-white p-6 rounded-xl card-shadow">
+                        <!-- Project Image Placeholder -->
+                        <div class="overflow-hidden rounded-lg shadow-xl">
+                            <img src="https://placehold.co/600x400/1e293b/0EA5E9?text=Angular+Analytics+Dashboard" alt="" class="w-full h-full object-cover project-img">
+                        </div>
+                        <div>
+                            <h3 class="text-3xl font-bold mb-3 text-slate-800">SaaS Analytics Dashboard</h3>
+                            <p class="text-gray-600 mb-4">A powerful single-page application (SPA) built with Angular to visualize complex business metrics using custom charts and real-time data streaming (mock data).</p>
+                            
+                            <!-- Tech Stack -->
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="bg-sky-100 text-sky-800 text-sm font-medium px-3 py-1 rounded-full">Angular</span>
+                                <span class="bg-sky-100 text-sky-800 text-sm font-medium px-3 py-1 rounded-full">RxJS</span>
+                                <span class="bg-sky-100 text-sky-800 text-sm font-medium px-3 py-1 rounded-full">Chart.js (Mock)</span>
+                                <span class="bg-sky-100 text-sky-800 text-sm font-medium px-3 py-1 rounded-full">Sass</span>
+                            </div>
+
+                            <!-- Links -->
+                            <div class="flex space-x-4">
+                                <a href="#" onclick="alertPlaceholder('Live Demo is currently unavailable for this mock project.')" class="accent-bg hover:bg-sky-600 text-white font-semibold py-2 px-5 rounded-full transition flex items-center">
+                                    <i data-lucide="external-link" class="icon w-4 h-4 mr-2"></i> Live Demo
+                                </a>
+                                <a href="#" onclick="alertPlaceholder('GitHub repository link for this mock project.')" class="border border-slate-400 text-slate-800 hover:bg-slate-100 font-semibold py-2 px-5 rounded-full transition flex items-center">
+                                    <i data-lucide="github" class="icon w-4 h-4 mr-2"></i> GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-16">
+                    <button onclick="alertPlaceholder('More projects are available upon request!')" class="accent-bg hover:bg-sky-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition transform hover:scale-105">
+                        See All Work (Mock Button)
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 md:py-32 primary-bg text-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+                <h3 class="text-sm font-semibold uppercase tracking-widest text-sky-400 mb-3 text-center">Let's Connect</h3>
+                <h2 class="text-4xl lg:text-5xl font-extrabold text-center mb-16">Get In Touch</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    
+                    <!-- Contact Details -->
+                    <div class="space-y-6">
+                        <p class="text-gray-300 text-lg">I'm currently available for new projects and job opportunities. Feel free to send me a message or connect on social media!</p>
+                        
+                        <!-- Email -->
+                        <div class="flex items-start space-x-4">
+                            <i data-lucide="mail" class="icon w-6 h-6 accent-color flex-shrink-0 mt-1"></i>
+                            <div>
+                                <p class="text-sm font-medium text-sky-400">Email Address</p>
+                                <p class="text-lg font-semibold">esrael.girma.dev@email.com (Mock)</p>
+                            </div>
+                        </div>
+
+                        <!-- Location -->
+                        <div class="flex items-start space-x-4">
+                            <i data-lucide="map-pin" class="icon w-6 h-6 accent-color flex-shrink-0 mt-1"></i>
+                            <div>
+                                <p class="text-sm font-medium text-sky-400">Location</p>
+                                <p class="text-lg font-semibold">Addis Ababa, Ethiopia (Remote)</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Socials -->
+                        <div class="pt-4 flex space-x-6">
+                            <a href="#" class="text-gray-400 hover:text-sky-400 transition transform hover:scale-110"><i data-lucide="github" class="icon w-7 h-7"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-sky-400 transition transform hover:scale-110"><i data-lucide="linkedin" class="icon w-7 h-7"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-sky-400 transition transform hover:scale-110"><i data-lucide="twitter" class="icon w-7 h-7"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form Placeholder -->
+                    <div class="bg-slate-800 p-8 rounded-xl card-shadow">
+                        <form onsubmit="event.preventDefault(); alertPlaceholder('Thank you for your message, Esrael will be in touch soon!'); this.reset();" class="space-y-4">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-300 mb-1">Name</label>
+                                <input type="text" id="name" name="name" required class="w-full p-3 bg-slate-700 border border-slate-600 rounded-lg text-white focus:ring-sky-500 focus:border-sky-500">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-300 mb-1">Email</label>
+                                <input type="email" id="email" name="email" required class="w-full p-3 bg-slate-700 border border-slate-600 rounded-lg text-white focus:ring-sky-500 focus:border-sky-500">
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-300 mb-1">Message</label>
+                                <textarea id="message" name="message" rows="4" required class="w-full p-3 bg-slate-700 border border-slate-600 rounded-lg text-white focus:ring-sky-500 focus:border-sky-500"></textarea>
+                            </div>
+                            <button type="submit" class="w-full accent-bg hover:bg-sky-600 text-white font-bold py-3 rounded-lg transition transform hover:scale-[1.01]">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white py-6">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-gray-400 text-sm">&copy; 2025 Esrael Girma. Built with <span class="accent-color">❤️</span> and Tailwind CSS.</p>
+        </div>
+    </footer>
+
+    <!-- Simple Message Box for Alert replacement -->
+    <div id="message-box" class="fixed inset-0 bg-black bg-opacity-70 hidden items-center justify-center p-4 z-[99]">
+        <div class="bg-white p-6 rounded-xl shadow-2xl max-w-sm w-full text-center transform scale-100 transition-all duration-300 ease-in-out">
+            <i data-lucide="check-circle" class="icon w-10 h-10 accent-color mx-auto mb-3"></i>
+            <p id="message-text" class="text-lg font-semibold text-gray-800 mb-4"></p>
+            <button onclick="closeMessageBox()" class="accent-bg hover:bg-sky-600 text-white font-bold py-2 px-6 rounded-full transition">OK</button>
+        </div>
+    </div>
+
+
+    <script>
+        // --- Initialization and Utility Functions ---
+        
+        // Load Lucide Icons after DOM is ready
+        lucide.createIcons();
+
+        // Get elements for mobile menu
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        
+        // Get elements for custom alert box
+        const messageBox = document.getElementById('message-box');
+        const messageText = document.getElementById('message-text');
+
+        // --- Utility: Replaces alert() ---
+        function alertPlaceholder(message) {
+            messageText.textContent = message;
+            messageBox.classList.remove('hidden');
+            messageBox.classList.add('flex');
+            lucide.createIcons(); // Re-render icon if needed
+        }
+
+        function closeMessageBox() {
+            messageBox.classList.add('hidden');
+            messageBox.classList.remove('flex');
+        }
+
+        // --- Mobile Menu Toggle Functionality ---
+        const toggleMobileMenu = () => {
+            const isHidden = mobileMenu.classList.toggle('hidden');
+            const icon = menuBtn.querySelector('svg');
+            
+            if (icon) {
+                // Change icon between 'menu' and 'x' (close)
+                icon.outerHTML = isHidden 
+                    ? `<i data-lucide="menu" class="icon w-8 h-8"></i>`
+                    : `<i data-lucide="x" class="icon w-8 h-8"></i>`;
+                lucide.createIcons();
+            }
+        };
+
+        // --- Event Listeners ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set up Menu Listener
+            menuBtn.addEventListener('click', toggleMobileMenu);
+
+            // Close menu when a mobile link is clicked
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        setTimeout(() => {
+                            mobileMenu.classList.add('hidden');
+                            // Reset icon to menu
+                            const icon = menuBtn.querySelector('svg');
+                            if (icon) {
+                                icon.outerHTML = `<i data-lucide="menu" class="icon w-8 h-8"></i>`;
+                                lucide.createIcons();
+                            }
+                        }, 200); 
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EthioLux Realty | Find Your Dream Property</title>
+    
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Load Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts: Inter (Professional Look) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('https://placehold.co/1920x1080/000000/FFFFFF?text=Modern+Addis+Ababa+Skyline');
+            background-size: cover;
+            background-position: center;
+        }
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #3b82f6; /* Blue-600 */
+            transition: width 0.3s ease-in-out;
+        }
+        .nav-link:hover::after, .nav-active::after {
+            width: 100%;
+        }
+        .nav-active { 
+            color: #3b82f6 !important; 
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header and Navigation -->
+    <header class="bg-white/95 backdrop-blur-md sticky top-0 left-0 right-0 z-50 shadow-lg">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#home" class="flex items-center space-x-2 text-2xl font-extrabold text-gray-900 tracking-tight">
+                <i class="fas fa-home text-blue-600"></i>
+                <span>EthioLux Realty</span>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden lg:flex items-center space-x-8">
+                <a href="#home" class="nav-link text-gray-600 hover:text-blue-600 transition nav-active">Home</a>
+                <a href="#properties" class="nav-link text-gray-600 hover:text-blue-600 transition">Properties</a>
+                <a href="#services" class="nav-link text-gray-600 hover:text-blue-600 transition">Services</a>
+                <a href="#agents" class="nav-link text-gray-600 hover:text-blue-600 transition">Agents</a>
+                <a href="#blog" class="nav-link text-gray-600 hover:text-blue-600 transition">Blog</a>
+                <a href="#contact" class="nav-link text-gray-600 hover:text-blue-600 transition">Contact</a>
+            </nav>
+
+            <!-- Menu Button (for Mobile/Tablet) -->
+            <button id="menu-btn" class="lg:hidden text-2xl text-gray-900 p-2 rounded-lg hover:bg-gray-100 transition">
+                <i class="fas fa-bars" id="menu-icon"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu (Dropdown) -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-200 shadow-xl">
+            <nav class="flex flex-col p-4 space-y-2">
+                <a href="#home" class="mobile-link py-2 px-3 text-gray-700 hover:bg-blue-50 rounded-lg transition"><i class="fas fa-house-chimney w-6"></i> Home</a>
+                <a href="#properties" class="mobile-link py-2 px-3 text-gray-700 hover:bg-blue-50 rounded-lg transition"><i class="fas fa-building w-6"></i> Properties</a>
+                <a href="#services" class="mobile-link py-2 px-3 text-gray-700 hover:bg-blue-50 rounded-lg transition"><i class="fas fa-handshake w-6"></i> Services</a>
+                <a href="#agents" class="mobile-link py-2 px-3 text-gray-700 hover:bg-blue-50 rounded-lg transition"><i class="fas fa-user-tie w-6"></i> Agents</a>
+                <a href="#blog" class="mobile-link py-2 px-3 text-gray-700 hover:bg-blue-50 rounded-lg transition"><i class="fas fa-newspaper w-6"></i> Blog</a>
+                <a href="#contact" class="mobile-link py-2 px-3 text-gray-700 hover:bg-blue-50 rounded-lg transition"><i class="fas fa-headset w-6"></i> Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Home/Hero Section -->
+        <section id="home" class="hero-bg min-h-[80vh] flex items-center justify-center text-white text-center pt-20">
+            <div class="container mx-auto px-6 py-16">
+                <h1 class="text-4xl md:text-6xl font-extrabold mb-4 animate-pulse">Find Your Dream Home</h1>
+                <p class="text-xl md:text-2xl font-light mb-10 max-w-3xl mx-auto">Explore the finest luxury properties and land for sale in Ethiopia.</p>
+                
+                <!-- Mock Search Bar -->
+                <div class="bg-white p-4 md:p-6 rounded-xl shadow-2xl max-w-4xl mx-auto text-gray-800">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                        <select class="p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full">
+                            <option>Property Type</option>
+                            <option>Apartment</option>
+                            <option>Villa</option>
+                            <option>Land</option>
+                        </select>
+                        <select class="p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full">
+                            <option>Location</option>
+                            <option>Bole</option>
+                            <option>Sarbet</option>
+                            <option>Kazanchis</option>
+                        </select>
+                         <input type="number" placeholder="Max Price (ETB)" class="p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full"/>
+                        <button class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition transform hover:scale-105 shadow-md">
+                            <i class="fas fa-search mr-2"></i>Search
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Properties Section -->
+        <section id="properties" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900">Featured Listings</h2>
+                    <p class="text-gray-600 mt-2">Handpicked selection of the most exquisite properties currently on the market.</p>
+                </div>
+                
+                <!-- Property Cards Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Property Card 1 (Luxury Villa) -->
+                    <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:shadow-2xl hover:-translate-y-1 transition duration-300">
+                        <img src="https://placehold.co/600x400/3b82f6/ffffff?text=Luxury+Villa" alt="Luxury Villa" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-lg font-bold text-blue-600">5,500,000 ETB</span>
+                                <span class="text-sm text-gray-500 bg-blue-100 px-3 py-1 rounded-full">For Sale</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">Modern Executive Home</h3>
+                            <p class="text-gray-500 flex items-center mb-4"><i class="fas fa-map-marker-alt text-red-500 mr-2"></i>Bole Sub-City, Addis Ababa</p>
+                            
+                            <!-- Key Details -->
+                            <div class="flex justify-between text-sm text-gray-600 border-t pt-4">
+                                <div class="text-center">
+                                    <i class="fas fa-bed text-blue-500"></i>
+                                    <p class="font-semibold mt-1">5 Beds</p>
+                                </div>
+                                <div class="text-center">
+                                    <i class="fas fa-bath text-blue-500"></i>
+                                    <p class="font-semibold mt-1">4 Baths</p>
+                                </div>
+                                <div class="text-center">
+                                    <i class="fas fa-ruler-combined text-blue-500"></i>
+                                    <p class="font-semibold mt-1">350 Sqm</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Property Card 2 (Apartment) -->
+                    <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:shadow-2xl hover:-translate-y-1 transition duration-300">
+                        <img src="https://placehold.co/600x400/10b981/ffffff?text=Apartment+Complex" alt="Apartment Complex" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-lg font-bold text-blue-600">1,800,000 ETB</span>
+                                <span class="text-sm text-gray-500 bg-green-100 px-3 py-1 rounded-full">For Rent</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">Downtown Luxury Flat</h3>
+                            <p class="text-gray-500 flex items-center mb-4"><i class="fas fa-map-marker-alt text-red-500 mr-2"></i>Kazanchis, Addis Ababa</p>
+                            
+                            <!-- Key Details -->
+                            <div class="flex justify-between text-sm text-gray-600 border-t pt-4">
+                                <div class="text-center">
+                                    <i class="fas fa-bed text-blue-500"></i>
+                                    <p class="font-semibold mt-1">2 Beds</p>
+                                </div>
+                                <div class="text-center">
+                                    <i class="fas fa-bath text-blue-500"></i>
+                                    <p class="font-semibold mt-1">2 Baths</p>
+                                </div>
+                                <div class="text-center">
+                                    <i class="fas fa-ruler-combined text-blue-500"></i>
+                                    <p class="font-semibold mt-1">110 Sqm</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Property Card 3 (Townhouse) -->
+                    <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:shadow-2xl hover:-translate-y-1 transition duration-300">
+                        <img src="https://placehold.co/600x400/ef4444/ffffff?text=Family+Townhouse" alt="Family Townhouse" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-lg font-bold text-blue-600">3,200,000 ETB</span>
+                                <span class="text-sm text-gray-500 bg-yellow-100 px-3 py-1 rounded-full">New Listing</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">Spacious Family Townhouse</h3>
+                            <p class="text-gray-500 flex items-center mb-4"><i class="fas fa-map-marker-alt text-red-500 mr-2"></i>Sarbet Area, Addis Ababa</p>
+                            
+                            <!-- Key Details -->
+                            <div class="flex justify-between text-sm text-gray-600 border-t pt-4">
+                                <div class="text-center">
+                                    <i class="fas fa-bed text-blue-500"></i>
+                                    <p class="font-semibold mt-1">4 Beds</p>
+                                </div>
+                                <div class="text-center">
+                                    <i class="fas fa-bath text-blue-500"></i>
+                                    <p class="font-semibold mt-1">3 Baths</p>
+                                </div>
+                                <div class="text-center">
+                                    <i class="fas fa-ruler-combined text-blue-500"></i>
+                                    <p class="font-semibold mt-1">280 Sqm</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-12"><button class="bg-gray-800 hover:bg-gray-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition">View All Properties</button></div>
+            </div>
+        </section>
+
+        <!-- Services Section (Why Choose Us) -->
+        <section id="services" class="py-16 md:py-24 bg-gray-100">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900">Our Premium Services</h2>
+                    <p class="text-gray-600 mt-2">We provide comprehensive support for all your real estate needs.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Service Card 1 -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg text-center transform hover:scale-105 transition duration-300">
+                        <i class="fas fa-user-tie text-5xl text-blue-600 mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Expert Agents</h3>
+                        <p class="text-gray-600">Connect with licensed and experienced agents dedicated to your success.</p>
+                    </div>
+
+                    <!-- Service Card 2 -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg text-center transform hover:scale-105 transition duration-300">
+                        <i class="fas fa-file-invoice-dollar text-5xl text-green-500 mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Mortgage & Finance</h3>
+                        <p class="text-gray-600">Receive top-tier consultation for seamless financing and secure property investment.</p>
+                    </div>
+
+                    <!-- Service Card 3 -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg text-center transform hover:scale-105 transition duration-300">
+                        <i class="fas fa-chart-line text-5xl text-red-500 mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Property Valuation</h3>
+                        <p class="text-gray-600">Accurate, data-driven property valuation to ensure you buy or sell at the right price.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Agents/Testimonials Section -->
+        <section id="agents" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900">Meet Our Top Agents</h2>
+                    <p class="text-gray-600 mt-2">Our team is committed to making your real estate journey effortless.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Agent 1 -->
+                    <div class="bg-gray-100 p-6 rounded-xl shadow-md text-center">
+                        <img src="https://placehold.co/150x150/1e293b/ffffff?text=Agent+A" alt="Agent 1" class="w-32 h-32 rounded-full mx-auto object-cover mb-4">
+                        <h3 class="text-xl font-bold text-gray-900">Dr. Elias Kebede</h3>
+                        <p class="text-blue-600 font-semibold mb-3">Senior Consultant</p>
+                        <p class="text-gray-600 text-sm">Specializes in Luxury Villas in Bole. 15 years experience.</p>
+                    </div>
+                    <!-- Agent 2 -->
+                    <div class="bg-gray-100 p-6 rounded-xl shadow-md text-center">
+                        <img src="https://placehold.co/150x150/1e293b/ffffff?text=Agent+B" alt="Agent 2" class="w-32 h-32 rounded-full mx-auto object-cover mb-4">
+                        <h3 class="text-xl font-bold text-gray-900">Ms. Samrawit Tadesse</h3>
+                        <p class="text-blue-600 font-semibold mb-3">Rental Specialist</p>
+                        <p class="text-gray-600 text-sm">Expert in commercial properties and downtown rentals.</p>
+                    </div>
+                    <!-- Agent 3 -->
+                    <div class="bg-gray-100 p-6 rounded-xl shadow-md text-center">
+                        <img src="https://placehold.co/150x150/1e293b/ffffff?text=Agent+C" alt="Agent 3" class="w-32 h-32 rounded-full mx-auto object-cover mb-4">
+                        <h3 class="text-xl font-bold text-gray-900">Ato Chala Biru</h3>
+                        <p class="text-blue-600 font-semibold mb-3">Land Broker</p>
+                        <p class="text-gray-600 text-sm">Focuses on undeveloped land and investment opportunities.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Section -->
+        <section id="blog" class="py-16 md:py-24 bg-gray-100">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900">Latest Market Insights</h2>
+                    <p class="text-gray-600 mt-2">Stay informed with the latest trends and news in the Ethiopian property market.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Blog Post 1 -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                        <img src="https://placehold.co/600x400/3b82f6/ffffff?text=Market+Trend" alt="Market Trends" class="w-full h-48 object-cover">
+                        <div class="p-5">
+                            <h3 class="text-xl font-bold mb-2 hover:text-blue-600 transition">Addis Ababa Property Price Trends 2025</h3>
+                            <p class="text-gray-500 text-sm mb-3">October 25, 2025</p>
+                            <a href="#" class="text-blue-600 font-semibold hover:underline">Read Article &rarr;</a>
+                        </div>
+                    </div>
+                    <!-- Blog Post 2 -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                        <img src="https://placehold.co/600x400/10b981/ffffff?text=Mortgage" alt="Mortgage Guide" class="w-full h-48 object-cover">
+                        <div class="p-5">
+                            <h3 class="text-xl font-bold mb-2 hover:text-blue-600 transition">A Beginner's Guide to Mortgage in Ethiopia</h3>
+                            <p class="text-gray-500 text-sm mb-3">October 18, 2025</p>
+                            <a href="#" class="text-blue-600 font-semibold hover:underline">Read Article &rarr;</a>
+                        </div>
+                    </div>
+                    <!-- Blog Post 3 -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                        <img src="https://placehold.co/600x400/ef4444/ffffff?text=Investing" alt="Investment Tips" class="w-full h-48 object-cover">
+                        <div class="p-5">
+                            <h3 class="text-xl font-bold mb-2 hover:text-blue-600 transition">Top 5 Areas for Real Estate Investment</h3>
+                            <p class="text-gray-500 text-sm mb-3">October 10, 2025</p>
+                            <a href="#" class="text-blue-600 font-semibold hover:underline">Read Article &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-16 md:py-24 bg-blue-600">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-white">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-extrabold">Ready to Find Your Place?</h2>
+                    <p class="text-blue-200 mt-2">We are here to help you every step of the way.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                    <!-- Contact Card 1: Location -->
+                    <div class="bg-blue-700 p-6 rounded-xl shadow-xl text-center">
+                        <i class="fas fa-location-dot text-4xl mb-3"></i>
+                        <h3 class="font-bold text-lg mb-1">Office Location</h3>
+                        <p class="text-blue-200">Bole Road, Mega Building, 5th Floor, Addis Ababa</p>
+                    </div>
+
+                    <!-- Contact Card 2: Phone -->
+                    <div class="bg-blue-700 p-6 rounded-xl shadow-xl text-center">
+                        <i class="fas fa-phone text-4xl mb-3"></i>
+                        <h3 class="font-bold text-lg mb-1">Call Us</h3>
+                        <p class="text-blue-200">+251 911 XXX XXX</p>
+                        <p class="text-blue-200">+251 945 XXX XXX</p>
+                    </div>
+
+                    <!-- Contact Card 3: Email -->
+                    <div class="bg-blue-700 p-6 rounded-xl shadow-xl text-center">
+                        <i class="fas fa-envelope text-4xl mb-3"></i>
+                        <h3 class="font-bold text-lg mb-1">Email Us</h3>
+                        <p class="text-blue-200">info@ethioluxrealty.com</p>
+                    </div>
+                </div>
+
+                <div class="text-center mt-12"><button class="bg-white text-blue-600 hover:bg-gray-200 font-bold py-3 px-8 rounded-full transition transform hover:scale-105 shadow-xl">Request a Callback</button></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-10">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p>&copy; 2025 EthioLux Realty. All rights reserved.</p>
+            <div class="flex justify-center space-x-4 mt-3">
+                <a href="#" class="text-gray-400 hover:text-blue-600 transition"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-gray-400 hover:text-blue-600 transition"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-gray-400 hover:text-blue-600 transition"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuBtn = document.getElementById('menu-btn');
+            const menuIcon = document.getElementById('menu-icon');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('main section');
+
+            // --- Mobile Menu Toggle Functionality ---
+            const toggleMobileMenu = () => {
+                const isHidden = mobileMenu.classList.toggle('hidden');
+                if (isHidden) {
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                } else {
+                    menuIcon.classList.remove('fa-bars');
+                    menuIcon.classList.add('fa-times');
+                }
+            };
+
+            menuBtn.addEventListener('click', toggleMobileMenu);
+
+            // Close menu when a mobile link is clicked
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        toggleMobileMenu();
+                    }
+                });
+            });
+
+            // --- Scrollspy: Active Link Functionality ---
+            const updateActiveNav = () => {
+                let currentSectionId = '';
+                // Check current scroll position
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    // Adjust offset for fixed header (around 80px)
+                    if (window.scrollY >= sectionTop - 100) { 
+                        currentSectionId = section.getAttribute('id');
+                    }
+                });
+
+                // Set active class
+                navLinks.forEach(link => {
+                    link.classList.remove('nav-active');
+                    if (link.getAttribute('href') === `#${currentSectionId}`) {
+                        link.classList.add('nav-active');
+                    }
+                });
+            };
+
+            // Initialize and update on scroll
+            window.addEventListener('scroll', updateActiveNav);
+            updateActiveNav(); // Initial call to set active state on load
+        });
+    </script>
+</body>
+</html>
+
