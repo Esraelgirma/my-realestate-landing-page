@@ -141,7 +141,12 @@
 
         @media (min-width: 1024px) {
             .desktop-nav { display: flex; align-items: center; gap: 2rem; }
-            .menu-btn { display: none; }
+            
+        }
+        @media (max-width: 768px){
+            .mobile-menu {
+                display: block;
+            }
         }
 
         /* --- Hero Section --- */
@@ -192,6 +197,8 @@
         
         @media (min-width: 768px) {
             .hero-title { font-size: 4.5rem; }
+            .menu-btn { display: none; }
+            
         }
 
         /* --- Quick Links/Search Bar --- */
